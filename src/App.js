@@ -1,15 +1,5 @@
 import React, {Component} from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-class NewCard extends Component {
-    render() {
-        return <div className="new-card">
-            This is a new card
-            <input className="new-card-title" placeholder="Please enter a title..."/>
-        </div>
-    }
-}
+import NewCard from './NewCard';
 
 class App extends Component {
 
