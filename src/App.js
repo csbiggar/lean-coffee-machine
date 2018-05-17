@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 
+class NewCard extends Component {
+    render() {
+        return <div className="new-card">
+            This is a new card
+            <input className="new-card-title" placeholder="Please enter a title..."/>
+        </div>
+    }
+}
+
 class App extends Component {
 
     constructor(props) {
@@ -12,12 +21,16 @@ class App extends Component {
     }
 
     handleAddCardClick() {
-        console.log("card added")
         this.setState(
             {
                 addingNewCard: true
             }
         )
+    }
+
+    newCardOrNothing() {
+        if (this.state.addingNewCard)
+            return <NewCard/>
     }
 
     render() {
@@ -28,12 +41,7 @@ class App extends Component {
                 </header>
                 <main>
                     <button id="add-a-card" onClick={() => this.handleAddCardClick()}>Add a card</button>
-
-                    { this.state.addingNewCard &&
-                        <div className="new-card">
-                            This is a new card
-                        </div>
-                    }
+                    {this.newCardOrNothing()}
                 </main>
             </div>
         );
