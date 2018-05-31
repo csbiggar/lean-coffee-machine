@@ -12,7 +12,7 @@ test('should render title', () => {
     expect(app.find('.App-title').text()).toEqual("Lean Coffee Machine");
 });
 
-test('add button will display new card', () => {
+test('add button should display new card', () => {
     const app = mount(<App/>);
 
     expect(app.find(".new-card").length).toEqual(0);
@@ -22,4 +22,15 @@ test('add button will display new card', () => {
 
     addCardButton.simulate('click');
     expect(app.find(".new-card").length).toEqual(1);
+});
+
+test('should create a card with a title', () => {
+    const app = mount(<App/>);
+
+    app.find('#add-a-card').simulate('click')
+    app.find(".new-card-title").first()
+        .simulate('change', {target: {value: 'new title'}})
+
+    expect(app.state('card').title).toEqual('new title');
+
 });

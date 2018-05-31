@@ -6,7 +6,7 @@ import React from 'react';
 import NewCard from '../NewCard';
 import {shallow} from 'enzyme';
 
-test('should have a title input filed', () => {
+test('should have a title input field', () => {
     const newCard = shallow(<NewCard/>);
 
     expect(newCard.find('div').text()).toEqual("This is a new card");

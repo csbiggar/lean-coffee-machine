@@ -18,9 +18,17 @@ class App extends Component {
         )
     }
 
+    handleCardTitleChange(event) {
+        this.setState(
+            {
+                card: {title: event.target.value}
+            }
+        )
+    }
+
     newCardOrNothing() {
         if (this.state.addingNewCard)
-            return <NewCard/>
+            return <NewCard onChange={(e) => this.handleCardTitleChange(e)}/>
     }
 
     render() {
