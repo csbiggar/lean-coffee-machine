@@ -7,7 +7,7 @@ class Card extends Component {
 
     render() {
         return (<div className="card">
-            This is a new card
+            #{this.props.cardId}
             <input className="card-title"
                    placeholder="Please enter a title..."
                    value={this.props.title}
