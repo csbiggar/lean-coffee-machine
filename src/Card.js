@@ -8,7 +8,10 @@ class Card extends Component {
     render() {
         return (<div className="card">
             This is a new card
-            <input className="card-title" placeholder="Please enter a title..." onChange={(e) => this.props.onChange(e)}/>
+            <input className="card-title"
+                   placeholder="Please enter a title..."
+                   value={this.props.title}
+                   onChange={(e) => this.props.onChange(e)}/>
         </div>);
     }
 }
