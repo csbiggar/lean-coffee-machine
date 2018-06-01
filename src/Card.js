@@ -11,7 +11,7 @@ class Card extends Component {
             <input className="card-title"
                    placeholder="Please enter a title..."
                    value={this.props.title}
-                   onChange={(e) => this.props.onChange(e)}/>
+                   onChange={(e) => this.props.onChange(e, this.props.cardId)}/>
         </div>);
     }
 }

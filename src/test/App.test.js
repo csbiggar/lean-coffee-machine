@@ -34,6 +34,6 @@ test('should store card title in state', () => {
     app.find(".card-title").first()
         .simulate('change', {target: {value: 'new title'}})
 
-    expect(app.state('card').title).toEqual('new title');
+    expect(app.state('cards')[0].title).toEqual('new title');
 
 });
