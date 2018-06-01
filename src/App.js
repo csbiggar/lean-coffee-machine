@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NewCard from './NewCard';
+import Card from './Card';
 
 class App extends Component {
 
@@ -33,8 +33,8 @@ class App extends Component {
         return (
             <div>
                 {this.state.cards.map((card, i) =>
-                    <NewCard key={i}
-                             onChange={(e) => this.handleCardTitleChange(e)}
+                    <Card key={i}
+                          onChange={(e) => this.handleCardTitleChange(e)}
                     />)
                 }
             </div>

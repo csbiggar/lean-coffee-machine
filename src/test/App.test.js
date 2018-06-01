@@ -15,23 +15,23 @@ test('should render title', () => {
 test('add button should display new cards', () => {
     const app = mount(<App/>);
 
-    expect(app.find(".new-card").length).toEqual(0);
+    expect(app.find(".card").length).toEqual(0);
 
     let addCardButton = app.find('#add-a-card');
     expect(addCardButton.text()).toEqual("Add a card");
 
     addCardButton.simulate('click');
-    expect(app.find(".new-card").length).toEqual(1);
+    expect(app.find(".card").length).toEqual(1);
 
     addCardButton.simulate('click');
-    expect(app.find(".new-card").length).toEqual(2);
+    expect(app.find(".card").length).toEqual(2);
 });
 
 test('should store card title in state', () => {
     const app = mount(<App/>);
 
     app.find('#add-a-card').simulate('click')
-    app.find(".new-card-title").first()
+    app.find(".card-title").first()
         .simulate('change', {target: {value: 'new title'}})
 
     expect(app.state('card').title).toEqual('new title');
