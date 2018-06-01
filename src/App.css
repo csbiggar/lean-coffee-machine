@@ -1,15 +1,10 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+body, input, textarea, button {
+  font-size: 1.2em;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 90px;
   padding: 20px;
   color: white;
 }
@@ -18,11 +13,46 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+main {
+  margin: 20px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+button {
+  margin: 5px 0px;
 }
+
+.card {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #7083a5;
+  max-width: 400px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px #BBB;
+  color: white;
+  font-weight: bold;
+}
+
+.card-id {
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+}
+
+.card-title {
+  display: block;
+  width: 90%;
+  border: 0px none;
+  padding: 5px;
+  resize: none;
+}
+
+/*
+            <div className="App">
+                <header className="App-header">
+                    <h1 className="App-title">Lean Coffee Machine</h1>
+                </header>
+                <main>
+                    <button id="add-a-card" onClick={() => this.handleAddCardClick()}>Add a card</button>
+                    {this.renderCards()}
+                </main>
+            </div>
+ */
