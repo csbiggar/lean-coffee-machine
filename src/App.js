@@ -6,14 +6,17 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            addingNewCard: false
+            cards: []
         }
     }
 
     handleAddCardClick() {
+        const cards = this.state.cards.slice();
+        cards.push({});
+
         this.setState(
             {
-                addingNewCard: true
+                cards: cards
             }
         )
     }
@@ -26,9 +29,16 @@ class App extends Component {
         )
     }
 
-    newCardOrNothing() {
-        if (this.state.addingNewCard)
-            return <NewCard onChange={(e) => this.handleCardTitleChange(e)}/>
+    renderCards() {
+        return (
+            <div>
+                {this.state.cards.map((card, i) =>
+                    <NewCard key={i}
+                             onChange={(e) => this.handleCardTitleChange(e)}
+                    />)
+                }
+            </div>
+        )
     }
 
     render() {
@@ -39,7 +49,7 @@ class App extends Component {
                 </header>
                 <main>
                     <button id="add-a-card" onClick={() => this.handleAddCardClick()}>Add a card</button>
-                    {this.newCardOrNothing()}
+                    {this.renderCards()}
                 </main>
             </div>
         );
