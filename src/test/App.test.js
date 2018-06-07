@@ -51,4 +51,6 @@ test('should make editable card read only on blur ', () => {
 
     expect(app.find(".card-editor").length).toEqual(0);
 
+    expect(app.find(".card-detail").length).toEqual(1)
+    expect(app.find(".card-detail").text()).toEqual("some content")
 });

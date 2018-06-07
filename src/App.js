@@ -54,6 +54,7 @@ class App extends Component {
                           onChange={(e, cardIndex) => this.handleCardContentChange(e, cardIndex)}
                           onBlur={(cardIndex) => this.handleCardBlur(cardIndex)}
                           editable={card.editable}
+                          content={card.content}
                     />)
                 }
             </div>
