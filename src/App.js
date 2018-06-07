@@ -21,10 +21,10 @@ class App extends Component {
         )
     }
 
-    handleCardTitleChange(event, cardIndex) {
-        const cards = this.state.cards.slice()
+    handleCardContentChange(event, cardIndex) {
+        const cards = this.state.cards.slice();
 
-        cards[cardIndex].title = event.target.value
+        cards[cardIndex].content = event.target.value;
 
         this.setState(
             {
@@ -39,7 +39,7 @@ class App extends Component {
                 {this.state.cards.map((card, i) =>
                     <Card key={i}
                           cardId={i}
-                          onChange={(e, cardIndex) => this.handleCardTitleChange(e, cardIndex)}
+                          onChange={(e, cardIndex) => this.handleCardContentChange(e, cardIndex)}
                     />)
                 }
             </div>

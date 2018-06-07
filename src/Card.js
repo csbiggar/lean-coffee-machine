@@ -4,9 +4,9 @@ class Card extends Component {
     render() {
         return (<div className="card">
             <p className="card-id">#{this.props.cardId}</p>
-            <textarea className="card-title"
+            <textarea className="card-editor"
                    placeholder="Please enter a title..."
-                   value={this.props.title}
+                   value={this.props.content}
                    onChange={(e) => this.props.onChange(e, this.props.cardId)}/>
         </div>);
     }

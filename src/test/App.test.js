@@ -31,9 +31,9 @@ test('should store card title in state', () => {
     const app = mount(<App/>);
 
     app.find('#add-a-card').simulate('click')
-    app.find(".card-title").first()
+    app.find(".card-editor").first()
         .simulate('change', {target: {value: 'new title'}})
 
-    expect(app.state('cards')[0].title).toEqual('new title');
+    expect(app.state('cards')[0].content).toEqual('new title');
 
 });
