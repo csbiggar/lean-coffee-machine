@@ -7,6 +7,7 @@ function Card(props) {
             (<textarea className="card-editor"
                        placeholder="Please enter something..."
                        value={props.content}
+                       onBlur={(e) => props.onBlur(props.cardId)}
                        onChange={(e) => props.onChange(e, props.cardId)}/>) :
             (<pre className="card-detail">{props.content}</pre>)
         }

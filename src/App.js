@@ -12,7 +12,19 @@ class App extends Component {
 
     handleAddCardClick() {
         const cards = this.state.cards.slice();
-        cards.push({});
+        cards.push({editable: true});
+
+        this.setState(
+            {
+                cards: cards
+            }
+        )
+    }
+
+    handleCardBlur(cardIndex) {
+        const cards = this.state.cards.slice();
+
+        cards[cardIndex].editable = false;
 
         this.setState(
             {
@@ -40,7 +52,8 @@ class App extends Component {
                     <Card key={i}
                           cardId={i}
                           onChange={(e, cardIndex) => this.handleCardContentChange(e, cardIndex)}
-                          editable={true}
+                          onBlur={(cardIndex) => this.handleCardBlur(cardIndex)}
+                          editable={card.editable}
                     />)
                 }
             </div>
