@@ -40,6 +40,7 @@ class App extends Component {
                     <Card key={i}
                           cardId={i}
                           onChange={(e, cardIndex) => this.handleCardContentChange(e, cardIndex)}
+                          editable={true}
                     />)
                 }
             </div>
