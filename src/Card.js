@@ -8,7 +8,7 @@ function Card(props) {
                        placeholder="Please enter something..."
                        value={props.content}
                        onChange={(e) => props.onChange(e, props.cardId)}/>) :
-            (<div/>)
+            (<pre className="card-detail">{props.content}</pre>)
         }
     </div>);
 }
