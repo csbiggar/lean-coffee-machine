@@ -33,6 +33,19 @@ class App extends Component {
         )
     }
 
+    handleCardClick(cardIndex, textInputRef) {
+        const cards = this.state.cards.slice();
+
+        cards[cardIndex].editable = true;
+
+        this.setState(
+            {
+                cards: cards
+            },
+            () => {   textInputRef.current.focus();}
+        )
+    }
+
     handleCardContentChange(event, cardIndex) {
         const cards = this.state.cards.slice();
 
@@ -53,6 +66,7 @@ class App extends Component {
                           cardId={i}
                           onChange={(e, cardIndex) => this.handleCardContentChange(e, cardIndex)}
                           onBlur={(cardIndex) => this.handleCardBlur(cardIndex)}
+                          onClick={(cardIndex, textInputRef) => this.handleCardClick(cardIndex, textInputRef)}
                           editable={card.editable}
                           content={card.content}
                     />)

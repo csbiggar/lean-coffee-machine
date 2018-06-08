@@ -38,19 +38,41 @@ test('should store card title in state', () => {
 
 });
 
-test('should make editable card read only on blur ', () => {
+test('should make editable card read-only on blur', () => {
     const appState = {cards: [{content: "some content", cardId: "1", editable: true}]};
     const app = mount(<App/>);
 
     app.setState(appState);
 
+    expect(app.find(".card-detail").length).toEqual(0);
     expect(app.find(".card-editor").length).toEqual(1);
-
 
     app.find(".card-editor").simulate('blur');
 
     expect(app.find(".card-editor").length).toEqual(0);
 
-    expect(app.find(".card-detail").length).toEqual(1)
+    expect(app.find(".card-detail").length).toEqual(1);
     expect(app.find(".card-detail").text()).toEqual("some content")
+});
+
+test('should make read-only card editable and focused on click', () => {
+    const appState = {cards: [{content: "some content", cardId: "1", editable: false}]};
+    const app = mount(<App/>);
+
+    app.setState(appState);
+
+    expect(app.find(".card-detail").length).toEqual(1);
+
+    expect(app.find(".card-editor").length).toEqual(0);
+
+    app.find(".card").simulate('click');
+
+
+    let cardEditor = app.find(".card-editor");
+    expect(cardEditor.length).toEqual(1);
+    expect(cardEditor.text()).toEqual("some content");
+
+    expect(cardEditor.matchesElement(document.activeElement)).toEqual(true);
+
+    expect(app.find(".card-detail").length).toEqual(0);
 });
