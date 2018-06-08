@@ -6,7 +6,6 @@ class Card extends Component {
         this.textInputRef = React.createRef();
     }
 
-
     render() {
         return (
             <div className="card" onClick={(e) => this.props.onClick(this.props.cardId, this.textInputRef)}>
