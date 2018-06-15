@@ -21,6 +21,12 @@ class Card extends Component {
             }
         </div>);
     }
+
+    componentDidMount() {
+        if (this.props.editable && this.textInputRef.current) {
+            this.textInputRef.current.focus()
+        }
+    }
 }
 
 export default Card;

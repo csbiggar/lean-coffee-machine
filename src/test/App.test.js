@@ -12,7 +12,7 @@ test('should render title', () => {
     expect(app.find('.App-title').text()).toEqual("Lean Coffee Machine");
 });
 
-test('add button should display new cards', () => {
+test('add button should create a new card and focus on it', () => {
     const app = mount(<App/>);
 
     expect(app.find(".card").length).toEqual(0);
@@ -22,6 +22,8 @@ test('add button should display new cards', () => {
 
     addCardButton.simulate('click');
     expect(app.find(".card").length).toEqual(1);
+
+    expect(app.find(".card-editor").matchesElement(document.activeElement)).toBeTruthy();
 
     addCardButton.simulate('click');
     expect(app.find(".card").length).toEqual(2);
