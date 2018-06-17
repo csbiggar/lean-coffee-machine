@@ -7,10 +7,11 @@ You can find the most recent version of this guide [here](https://github.com/fac
 ### Prerequisites
 
 1. [Nodejs](https://nodejs.org/en/)
-2. A package manager (we're using [yarn](https://yarnpkg.com)
+2. A package manager (we're using [yarn](https://yarnpkg.com) )
 
 ### Setup
 Clone the repo
+
 Run `yarn install`
 
 # Running and development
