@@ -49,14 +49,7 @@ button {
   resize: none;
 }
 
-/*
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Lean Coffee Machine</h1>
-                </header>
-                <main>
-                    <button id="add-a-card" onClick={() => this.handleAddCardClick()}>Add a card</button>
-                    {this.renderCards()}
-                </main>
-            </div>
- */
+.card-detail {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
