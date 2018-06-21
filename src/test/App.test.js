@@ -57,6 +57,20 @@ test('should make editable card read-only on blur', () => {
     expect(app.find(".card-detail").text()).toEqual("some content")
 });
 
+test('should remove empty editable card on blur', () => {
+    const appState = {cards: [{content: "", cardId: "1", editable: true}]};
+    const app = mount(<App/>);
+
+    app.setState(appState);
+
+    expect(app.find(".card-editor").exists()).toBe(true);
+
+    app.find(".card-editor").simulate('blur');
+
+    expect(app.find(".card").exists()).toBe(false);
+
+});
+
 test('should make read-only card editable and focused on click', () => {
     const appState = {cards: [{content: "some content", cardId: "1", editable: false}]};
     const app = mount(<App/>);

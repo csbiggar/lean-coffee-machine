@@ -22,9 +22,13 @@ class App extends Component {
     }
 
     handleCardBlur(cardIndex) {
-        const cards = this.state.cards.slice();
+        let cards  = this.state.cards.slice();
 
-        cards[cardIndex].editable = false;
+        if (cards[cardIndex].content) {
+            cards[cardIndex].editable = false;
+        } else {
+            cards.splice(cardIndex, 1);
+        }
 
         this.setState(
             {
