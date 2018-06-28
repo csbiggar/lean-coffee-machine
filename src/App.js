@@ -5,8 +5,12 @@ class App extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            cards: []
+        if (props.persistenceAdaptor) {
+            this.state = props.persistenceAdaptor.load()
+        } else {
+            this.state = {
+                cards: []
+            }
         }
     }
 
@@ -22,7 +26,7 @@ class App extends Component {
     }
 
     handleCardBlur(cardIndex) {
-        let cards  = this.state.cards.slice();
+        let cards = this.state.cards.slice();
 
         if (cards[cardIndex].content) {
             cards[cardIndex].editable = false;
@@ -46,7 +50,9 @@ class App extends Component {
             {
                 cards: cards
             },
-            () => { textInputRef.current.focus(); }
+            () => {
+                textInputRef.current.focus();
+            }
         )
     }
 

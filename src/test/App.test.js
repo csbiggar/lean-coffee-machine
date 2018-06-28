@@ -4,7 +4,8 @@
 
 import React from 'react';
 import App from '../App';
-import {shallow, mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
+import BoardRepository from '../BoardRepository';
 
 test('should render title', () => {
     const app = shallow(<App/>);
@@ -91,4 +92,13 @@ test('should make read-only card editable and focused on click', () => {
     expect(cardEditor.matchesElement(document.activeElement)).toEqual(true);
 
     expect(app.find(".card-detail").length).toEqual(0);
+});
+
+
+test('should load persisted cards', () => {
+    const adaptor = new BoardRepository();
+
+    const app = mount(<App persistenceAdaptor={adaptor}/>);
+
+    expect(app.state().cards.length).toEqual(1)
 });
