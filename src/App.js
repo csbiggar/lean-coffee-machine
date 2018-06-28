@@ -21,11 +21,14 @@ class App extends Component {
         )
     }
 
-    //TODO create a card object to make this more readable
-    handleCardBlur() {
-        const cards  = this.state.cards
-            .filter((card) => card.content)
-            .map((card) => Object.assign({}, card, {editable: false}));
+    handleCardBlur(cardIndex) {
+        let cards  = this.state.cards.slice();
+
+        if (cards[cardIndex].content) {
+            cards[cardIndex].editable = false;
+        } else {
+            cards.splice(cardIndex, 1);
+        }
 
         this.setState(
             {
