@@ -5,7 +5,20 @@
 import React from 'react';
 import App from '../App';
 import {mount, shallow} from 'enzyme';
-import BoardRepository from '../BoardRepository';
+import SampleBoardRepository from '../BoardRepositories';
+
+const mockLoad = jest.fn(() => {
+    return {cards: [
+        {content: "xxxxx", cardId: "1", editable: false},
+        {content: "yyyy", cardId: "1", editable: false}
+        ]}
+});
+
+jest.mock('../BoardRepositories', () => {
+    return jest.fn().mockImplementation(() => {
+        return {load: mockLoad};
+    });
+});
 
 test('should render title', () => {
     const app = shallow(<App/>);
@@ -96,9 +109,23 @@ test('should make read-only card editable and focused on click', () => {
 
 
 test('should load persisted cards', () => {
-    const adaptor = new BoardRepository();
-
+    const adaptor = new SampleBoardRepository();
     const app = mount(<App persistenceAdaptor={adaptor}/>);
-
-    expect(app.state().cards.length).toEqual(1)
+    expect(app.state().cards.length).toEqual(2)
 });
+
+
+//TODO: next
+// More info on mocking http://jestjs.io/docs/en/es6-class-mocks.html
+// test('should save board state on blur', () => {
+//     const adaptor = new SampleBoardRepository();
+//
+//
+//     const app = mount(<App persistenceAdaptor={mockRepository}/>);
+//
+//     app.find(".card").simulate('click');
+//     app.find(".card-editor").simulate('blur');
+
+// assert that state now contains new card....
+//
+// });
