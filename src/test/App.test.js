@@ -115,9 +115,10 @@ test('should persist changes to existing card on blur', () => {
         .simulate('change', {target: {value: 'more stuff'}});
     app.find(".card-editor").simulate('blur');
 
-    expect(adaptor.saveCard).toHaveBeenCalled()
-
-
+    expect(adaptor.saveCard).toHaveBeenCalledWith({
+        content: "more stuff",
+        cardId: "1"
+    });
 });
 
 

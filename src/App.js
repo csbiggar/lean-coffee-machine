@@ -28,10 +28,12 @@ class App extends Component {
 
     handleCardBlur(cardIndex) {
         let cards = this.state.cards.slice();
+        let card = cards[cardIndex];
 
-        if (cards[cardIndex].content) {
-            cards[cardIndex].editable = false;
+        if (card.content) {
+            card.editable = false;
         } else {
+            // Remove the card
             cards.splice(cardIndex, 1);
         }
 
@@ -42,9 +44,11 @@ class App extends Component {
         )
 
         if (this.persistenceAdaptor) {
-            this.persistenceAdaptor.saveCard()
+            this.persistenceAdaptor.saveCard({
+                cardId: card.cardId,
+                content: card.content
+            })
         }
-
     }
 
 
