@@ -1,11 +1,15 @@
-export default class SampleBoardRepository {
+class SampleBoardRepository {
     load() {
         return {cards: [{content: "board repository content", cardId: "1", editable: false}]}
     }
 }
 
-class LocalStorageBoardRepository {
+/*class LocalStorageBoardRepository {
     load() {
 
     }
+}*/
+
+export {
+    SampleBoardRepository
 }
