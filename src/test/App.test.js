@@ -102,19 +102,23 @@ test('should load persisted cards', () => {
 });
 
 
-// //TODO: next
-// //More info on mocking http://jestjs.io/docs/en/es6-class-mocks.html
-// test('should persist card on blur', () => {
-//     const adaptor = new SampleBoardRepository();
-//
-//     const app = mount(<App persistenceAdaptor={mockRepository}/>);
-//
-//     app.find(".card").simulate('click');
-//     app.find(".card-editor").simulate('blur');
-//
-//     // assert that state now contains new card....
-//
-// });
+//TODO: next
+//More info on mocking http://jestjs.io/docs/en/es6-class-mocks.html
+test('should persist changes to existing card on blur', () => {
+    const adaptor = new MockRepository();
+    adaptor.saveCard = jest.fn()
+
+    const app = mount(<App persistenceAdaptor={adaptor}/>);
+
+    app.find(".card").first().simulate('click');
+    app.find(".card-editor").first()
+        .simulate('change', {target: {value: 'more stuff'}});
+    app.find(".card-editor").simulate('blur');
+
+    expect(adaptor.saveCard).toHaveBeenCalled()
+
+
+});
 
 
 class MockRepository {
@@ -122,8 +126,13 @@ class MockRepository {
         return {
             cards: [
                 {content: "xxxxx", cardId: "1", editable: false},
-                {content: "yyyy", cardId: "1", editable: false}
+                {content: "yyyy", cardId: "2", editable: false}
             ]
         }
     }
+
+    saveCard() {
+
+    }
+
 }

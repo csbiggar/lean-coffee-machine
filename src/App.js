@@ -6,7 +6,8 @@ class App extends Component {
     constructor(props) {
         super(props)
         if (props.persistenceAdaptor) {
-            this.state = props.persistenceAdaptor.load()
+            this.persistenceAdaptor = props.persistenceAdaptor
+            this.state = this.persistenceAdaptor.load()
         } else {
             this.state = {
                 cards: []
@@ -39,7 +40,13 @@ class App extends Component {
                 cards: cards
             }
         )
+
+        if (this.persistenceAdaptor) {
+            this.persistenceAdaptor.saveCard()
+        }
+
     }
+
 
     handleCardClick(cardIndex, textInputRef) {
         const cards = this.state.cards.slice();
