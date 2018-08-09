@@ -30,14 +30,14 @@ test('add button should create a new card and focus on it', () => {
     expect(app.find(".card").length).toEqual(2);
 });
 
-test('should store card title in state', () => {
+test('should store card text in state', () => {
     const app = mount(<App/>);
 
     app.find('#add-a-card').simulate('click');
     app.find(".card-editor").first()
-        .simulate('change', {target: {value: 'new title'}});
+        .simulate('change', {target: {value: 'new text'}});
 
-    expect(app.state('cards')[0].content).toEqual('new title');
+    expect(app.state('cards')[0].content).toEqual('new text');
 
 });
 
@@ -101,9 +101,6 @@ test('should load persisted cards', () => {
     expect(app.state().cards.length).toEqual(2)
 });
 
-
-//TODO: next
-//More info on mocking http://jestjs.io/docs/en/es6-class-mocks.html
 test('should persist changes to existing card on blur', () => {
     const adaptor = new MockRepository();
     adaptor.saveCard = jest.fn()
