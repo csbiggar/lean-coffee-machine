@@ -8,12 +8,15 @@ class SampleBoardRepository {
     }
 }
 
-/*class LocalStorageBoardRepository {
-    load() {
+class LocalStorageBoardRepository {
+    load() {}
 
+    saveCard(card) {
+        window.localStorage.setItem("cards", [card])
     }
-}*/
+}
 
 export {
-    SampleBoardRepository
+    SampleBoardRepository,
+    LocalStorageBoardRepository
 }
