@@ -10,11 +10,11 @@ class SampleBoardRepository {
 
 class LocalStorageBoardRepository {
     load() {
-        window.localStorage.getItem("cards")
+        return JSON.parse(window.localStorage.getItem("cards"))
     }
 
     saveCard(card) {
-        window.localStorage.setItem("cards", [card])
+        window.localStorage.setItem("cards", JSON.stringify({cards: [card]}))
     }
 }
 

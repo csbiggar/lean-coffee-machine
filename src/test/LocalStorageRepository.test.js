@@ -12,7 +12,8 @@ test('should save to localStorage', () => {
 
     repository.saveCard(saveCardPayload)
 
-    expect(localStorage.setItem).toHaveBeenLastCalledWith("cards", [saveCardPayload]);
+    expect(localStorage.setItem).toHaveBeenLastCalledWith(
+        "cards", JSON.stringify({cards:[saveCardPayload]}));
 });
 
 test('should load cards from localStorage', () => {
@@ -23,5 +24,13 @@ test('should load cards from localStorage', () => {
     expect(localStorage.getItem).toHaveBeenLastCalledWith("cards");
 });
 
-// TODO Deeper tests on shape of data being returned by load() call,
-// following saveCard() operations
+// TODO
+//
+// Ensure that a load() call will handle missing data, e.g. for a new
+// browser that doesn't have anything persisted to localStorage
+//
+// Deeper tests on shape of data being returned by load() call,
+// following saveCard() operations.
+//
+// Also a bit weird to persist the entire app state. Maybe just save
+// the cards array instead.
