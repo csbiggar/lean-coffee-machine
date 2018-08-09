@@ -14,3 +14,14 @@ test('should save to localStorage', () => {
 
     expect(localStorage.setItem).toHaveBeenLastCalledWith("cards", [saveCardPayload]);
 });
+
+test('should load cards from localStorage', () => {
+    const repository = new LocalStorageBoardRepository();
+
+    repository.load();
+
+    expect(localStorage.getItem).toHaveBeenLastCalledWith("cards");
+});
+
+// TODO Deeper tests on shape of data being returned by load() call,
+// following saveCard() operations
