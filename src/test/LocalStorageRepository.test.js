@@ -34,14 +34,3 @@ test('should return empty array if theres nothing there', () => {
     expect(repository.load()).toEqual([])
 
 });
-
-// TODO
-//
-// Ensure that a load() call will handle missing data, e.g. for a new
-// browser that doesn't have anything persisted to localStorage
-//
-// Deeper tests on shape of data being returned by load() call,
-// following saveCard() operations.
-//
-// Also a bit weird to persist the entire app state. Maybe just save
-// the cards array instead.
