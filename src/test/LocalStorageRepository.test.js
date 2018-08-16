@@ -17,7 +17,7 @@ test('should save to localStorage', () => {
     repository.saveCard(saveCardPayload)
 
     expect(localStorage.setItem).toHaveBeenLastCalledWith(
-        "cards", JSON.stringify({cards:[saveCardPayload]}));
+        "cards", JSON.stringify([saveCardPayload]));
 });
 
 test('should load cards from localStorage', () => {
