@@ -3,6 +3,10 @@
  */
 import {LocalStorageBoardRepository} from '../BoardRepositories';
 
+beforeEach(() => {
+    localStorage.clear();
+})
+
 test('should save to localStorage', () => {
     const repository = new LocalStorageBoardRepository();
     let saveCardPayload = {
@@ -22,6 +26,13 @@ test('should load cards from localStorage', () => {
     repository.load();
 
     expect(localStorage.getItem).toHaveBeenLastCalledWith("cards");
+});
+
+test('should return empty array if theres nothing there', () => {
+    const repository = new LocalStorageBoardRepository();
+
+    expect(repository.load()).toEqual([])
+
 });
 
 // TODO

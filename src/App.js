@@ -15,8 +15,8 @@ class App extends Component {
 
     componentDidMount() {
         if (this.persistenceAdaptor) {
-            const data = this.persistenceAdaptor.load();
-            this.setState( data );
+            const savedCards = this.persistenceAdaptor.load();
+            this.setState( { cards: savedCards } );
         }
     }
 

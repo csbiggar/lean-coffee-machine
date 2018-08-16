@@ -94,12 +94,6 @@ test('should make read-only card editable and focused on click', () => {
     expect(app.find(".card-detail").length).toEqual(0);
 });
 
-test('should render without reliance on stored cards being retrieved', () => {
-    const adaptor = new DeadRepository();
-    const app = mount(<App persistenceAdaptor={adaptor}/>);
-    expect(app.state().cards.length).toEqual(0)
-});
-
 test('should load persisted cards', () => {
     const adaptor = new MockRepository();
     const app = mount(<App persistenceAdaptor={adaptor}/>);
@@ -126,20 +120,14 @@ test('should persist changes to existing card on blur', () => {
 
 class MockRepository {
     load() {
-        return {
-            cards: [
-                {content: "xxxxx", cardId: "1", editable: false},
-                {content: "yyyy", cardId: "2", editable: false}
-            ]
-        }
+        return [
+            {content: "xxxxx", cardId: "1", editable: false},
+            {content: "yyyy", cardId: "2", editable: false}
+        ]
+
     }
 
     saveCard() {
 
     }
-}
-
-class DeadRepository {
-    load() { }
-    saveCard() {}
 }
