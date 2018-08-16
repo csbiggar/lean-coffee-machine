@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './App.css';
 import App from './App';
-import {SampleBoardRepository} from './BoardRepositories';
+import {LocalStorageBoardRepository} from './BoardRepositories';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-    <App persistenceAdaptor={new SampleBoardRepository()}/>,
+    <App persistenceAdaptor={new LocalStorageBoardRepository()}/>,
     document.getElementById('root')
 );
 

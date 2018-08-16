@@ -4,14 +4,19 @@ import Card from './Card';
 class App extends Component {
 
     constructor(props) {
-        super(props)
-        if (props.persistenceAdaptor) {
-            this.persistenceAdaptor = props.persistenceAdaptor
-            this.state = this.persistenceAdaptor.load()
-        } else {
-            this.state = {
-                cards: []
-            }
+        super(props);
+
+        this.persistenceAdaptor = props.persistenceAdaptor;
+
+        this.state = {
+            cards: []
+        };
+    }
+
+    componentDidMount() {
+        if (this.persistenceAdaptor) {
+            const data = this.persistenceAdaptor.load();
+            this.setState( data );
         }
     }
 

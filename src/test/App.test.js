@@ -94,6 +94,11 @@ test('should make read-only card editable and focused on click', () => {
     expect(app.find(".card-detail").length).toEqual(0);
 });
 
+test('should render without reliance on stored cards being retrieved', () => {
+    const adaptor = new DeadRepository();
+    const app = mount(<App persistenceAdaptor={adaptor}/>);
+    expect(app.state().cards.length).toEqual(0)
+});
 
 test('should load persisted cards', () => {
     const adaptor = new MockRepository();
@@ -132,5 +137,9 @@ class MockRepository {
     saveCard() {
 
     }
+}
 
+class DeadRepository {
+    load() { }
+    saveCard() {}
 }
