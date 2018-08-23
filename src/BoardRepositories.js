@@ -15,7 +15,9 @@ class LocalStorageBoardRepository {
     }
 
     saveCard(card) {
-        window.localStorage.setItem("cards", JSON.stringify([card]))
+        let cards = this.load();
+        cards.push(card);
+        window.localStorage.setItem("cards", JSON.stringify(cards));
     }
 }
 
