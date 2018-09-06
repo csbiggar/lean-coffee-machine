@@ -14,6 +14,15 @@ class LocalStorageBoardRepository {
         return cards ? cards : [];
     }
 
+    // TODO new interface
+    /*
+    createBoard()
+    getBoard(boardId)
+    createCard(boardId, cardDetails)
+    updateCard(boardId, cardId, cardDetails)
+    deleteCard(boardId, cardId)
+    */
+
     saveCard(card) {
         let cards = this.load();
         cards.push(card);
