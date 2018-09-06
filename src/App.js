@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import Header from './Header'
 import Board from './Board'
 
 class App extends Component {
@@ -6,10 +7,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Lean Coffee Machine</h1>
-                </header>
-
+                <Header/>
                 <Board/>
             </div>
         );

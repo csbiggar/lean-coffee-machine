@@ -4,10 +4,10 @@
 
 import React from 'react';
 import App from '../App';
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 
 test('should render title', () => {
-    const app = shallow(<App/>);
+    const app = mount(<App/>);
 
     expect(app.find('.App-title').text()).toEqual("Lean Coffee Machine");
 });
