@@ -8,6 +8,7 @@ import {JSDOM} from 'jsdom';
 import 'jest-localstorage-mock';
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
+global.jsdom = jsdom;
 const { window } = jsdom;
 global.window = window;
 window.localStorage = localStorage;

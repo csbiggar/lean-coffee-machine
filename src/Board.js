@@ -86,7 +86,7 @@ class Board extends Component {
 
     renderCards() {
         return (
-            <div>
+            <div className="board">
                 {this.state.cards.map((card, i) =>
                     <Card key={i}
                           cardId={i}
