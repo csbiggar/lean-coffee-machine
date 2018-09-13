@@ -19,6 +19,7 @@ test('should render board when visting /boards URL', () => {
 
     expect(app.find('.App-title').text()).toEqual("Lean Coffee Machine");
     expect(app.find('.board').length).toEqual(1)
+    expect(app.find('.card').length).toEqual(2)
 });
 
 function setPath(path) {
