@@ -69,7 +69,7 @@ test('should return empty array if theres nothing there', () => {
 });
 
 
-test('should create new card', () => {
+test('should create new card on empty local storage', () => {
     const repository = new LocalStorageBoardRepository();
     let createCardPayload = {
         boardId: 1,
@@ -86,4 +86,39 @@ test('should create new card', () => {
 
     expect(localStorage.setItem).toHaveBeenLastCalledWith(
         "cards", JSON.stringify([savedCard]));
+});
+
+test('should add card with new unique id to non-empty localStorage', () => {
+
+    //given a repo with an existing saved card
+    const repository = new LocalStorageBoardRepository();
+    const existingCard = {
+        id: 1,
+        boardId: 1,
+        content: "old stuff"
+    };
+    localStorage.setItem("cards", JSON.stringify(
+        [ existingCard ]
+    ));
+
+    //when i save a new card
+    const createCardPayload = {
+        boardId: 3,
+        content: "whatever"
+    };
+    repository.createCard(createCardPayload)
+
+    //then repo contains both cards and new card has a unique id
+    const newCard = {
+        id: 2,
+        boardId: 3,
+        content: "whatever"
+    };
+
+    expect(localStorage.setItem).toHaveBeenLastCalledWith(
+        "cards", JSON.stringify(
+            [
+                existingCard, newCard
+            ]
+        ));
 });

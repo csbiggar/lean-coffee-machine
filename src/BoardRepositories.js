@@ -9,6 +9,7 @@ class SampleBoardRepository {
 }
 
 class LocalStorageBoardRepository {
+
     load() {
         const cards =  JSON.parse(window.localStorage.getItem("cards"))
         return cards ? cards : [];
@@ -36,12 +37,15 @@ class LocalStorageBoardRepository {
     */
 
     createCard(newCardRequest) {
+        const cards = this.load();
+
         const newCard = {
-            id: 1,
+            id: cards.length+1, // Naughty. Will go badly wrong once you've deleted cards
+                                // Suggest taking the (max+1) ID or even better, storing
+                                // a "Card ID sequence" number separately and incrementing
+                                // this each time?
             ...newCardRequest
         };
-
-        let cards = this.load();
         cards.push(newCard);
         window.localStorage.setItem("cards", JSON.stringify(cards));
 
