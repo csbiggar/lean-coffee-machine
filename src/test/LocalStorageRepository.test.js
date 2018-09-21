@@ -5,7 +5,8 @@ import {LocalStorageBoardRepository} from '../BoardRepositories';
 
 beforeEach(() => {
     localStorage.clear();
-})
+    localStorage.setItem.mockClear()
+});
 
 test('should save to empty localStorage', () => {
     const repository = new LocalStorageBoardRepository();
@@ -65,4 +66,24 @@ test('should return empty array if theres nothing there', () => {
     const repository = new LocalStorageBoardRepository();
 
     expect(repository.load()).toEqual([])
+});
+
+
+test('should create new card', () => {
+    const repository = new LocalStorageBoardRepository();
+    let createCardPayload = {
+        boardId: 1,
+        content: "whatever"
+    };
+
+    repository.createCard(createCardPayload);
+
+    let savedCard = {
+        id: 1,
+        boardId: 1,
+        content: "whatever"
+    };
+
+    expect(localStorage.setItem).toHaveBeenLastCalledWith(
+        "cards", JSON.stringify([savedCard]));
 });
