@@ -36,14 +36,15 @@ class LocalStorageBoardRepository {
 
     */
 
+
     createCard(newCardRequest) {
         const cards = this.load();
 
+        const cardIds = cards.map(card => card.id);
+        const maxId = Math.max(0,...cardIds);
+
         const newCard = {
-            id: cards.length+1, // Naughty. Will go badly wrong once you've deleted cards
-                                // Suggest taking the (max+1) ID or even better, storing
-                                // a "Card ID sequence" number separately and incrementing
-                                // this each time?
+            id: maxId + 1,
             ...newCardRequest
         };
         cards.push(newCard);

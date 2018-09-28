@@ -88,12 +88,13 @@ test('should create new card on empty local storage', () => {
         "cards", JSON.stringify([savedCard]));
 });
 
-test('should add card with new unique id to non-empty localStorage', () => {
 
+
+test('should take the highest ID+1 when assigning new card IDs', () => {
     //given a repo with an existing saved card
     const repository = new LocalStorageBoardRepository();
     const existingCard = {
-        id: 1,
+        id: 2,
         boardId: 1,
         content: "old stuff"
     };
@@ -110,7 +111,7 @@ test('should add card with new unique id to non-empty localStorage', () => {
 
     //then repo contains both cards and new card has a unique id
     const newCard = {
-        id: 2,
+        id: 3,
         boardId: 3,
         content: "whatever"
     };
