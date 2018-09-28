@@ -123,3 +123,64 @@ test('should take the highest ID+1 when assigning new card IDs', () => {
             ]
         ));
 });
+
+
+test('should update content of an existing card', () => {
+    //given a repo with an existing saved card
+    const repository = new LocalStorageBoardRepository();
+    const existingCard = {
+        id: 2,
+        boardId: 1,
+        content: "old stuff"
+    };
+    localStorage.setItem("cards", JSON.stringify(
+        [ existingCard ]
+    ));
+
+    //when i update the card
+    const updateCardPayload = {
+        id: 2,
+        content: "new stuff"
+    };
+    repository.updateCard(updateCardPayload)
+
+    //then the repo contains the updated card
+    const updatedCard = {
+        id: 2,
+        boardId: 1,
+        content: "new stuff"
+    };
+
+    expect(localStorage.setItem).toHaveBeenLastCalledWith(
+        "cards", JSON.stringify(
+            [
+                updatedCard
+            ]
+        ));
+});
+
+test('should delete an existing card', () => {
+    //given a repo with an existing saved card
+    const repository = new LocalStorageBoardRepository();
+    const existingCard1 = {
+        id: 1,
+        boardId: 1,
+        content: "stuff 1"
+    };
+    const existingCard2 = {
+        id: 2,
+        boardId: 1,
+        content: "stuff 2"
+    };
+    localStorage.setItem("cards", JSON.stringify(
+        [existingCard1, existingCard2]
+    ));
+
+    //when I delete the card
+    repository.deleteCard(2)
+
+    //then the repo no longer contains the card
+    expect(localStorage.setItem).toHaveBeenLastCalledWith(
+        "cards", JSON.stringify([existingCard1]));
+});
+

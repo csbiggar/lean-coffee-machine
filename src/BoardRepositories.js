@@ -52,6 +52,19 @@ class LocalStorageBoardRepository {
 
         return newCard;
     }
+
+    updateCard(updateCardRequest) {
+        const cards = this.load();
+        const card = cards.find(card => card.id === updateCardRequest.id);
+        card.content = updateCardRequest.content;
+        window.localStorage.setItem("cards", JSON.stringify(cards));
+    }
+
+    deleteCard(cardId) {
+        const cards = this.load()
+            .filter(card => card.id !== cardId);
+        window.localStorage.setItem("cards", JSON.stringify(cards));
+    }
 }
 
 export {
